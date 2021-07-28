@@ -5,10 +5,10 @@ result_cnt = 0
 for i in range(t):
     num_lists.append(list(map(int,input().split())))
 
-for j in num_lists:
+for num_list in num_lists:
     result_sum = 0
     result_num = 0
-    for k in j:
+    for k in num_list:
        result_sum += k
        result_num += 1
     result_cnt += 1
