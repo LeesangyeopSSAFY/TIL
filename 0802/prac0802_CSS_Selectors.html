@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <title>CSS Selectors 연습</title>
+  <style>
+    /* 전체 선택자 */
+    * {
+      color:red;
+    }
+
+    h2 {
+      color: orange;
+    }
+
+    .green {
+      color: green;
+    }
+
+    #purple {
+      color: purple;
+    }
+
+    .box > p {
+      font-size: 30px;
+    }
+
+    .box p {
+      color: blue;
+    }
+    </style>
+
+</head>
+<body>
+  <h1 class="green">SANGYEOP</h1>
+  <h2>선택자 연습</h2>
+  <div class="green box">
+    box contents
+    <div>
+      <p>지역 목록</p>
+      <ul>
+        <li>서울</li>
+        <li id="purple">인천</li>
+        <li>부산</li>
+        <li>울산</li>
+      </ul>
+    </div>
+    <p>lorem + tab : 랜덤한 문자열 자동 생성!</p>
+  </div>
+  <h3>HELLO</h3>
+  <h4>CSS</h4>
+</body>
+</html>

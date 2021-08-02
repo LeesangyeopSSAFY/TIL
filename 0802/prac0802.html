@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <title>학생 건강설문</title>
+  <style>
+    h1 {
+      color: red;
+      font-size: 40px;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <a href="https://www.naver.com/">
+      <img src="C:\Users\NT800G5M-X59\Desktop\TIL\0802\image\my_photo.png" alt="main img">
+    </a>
+    <h1>학생 건강설문</h1>
+  </header>
+  
+  <section>
+    <form action="#">
+      <div>
+        <label for="name">이름을 기재해주세요.</label><br>
+        <input type="text" id="name" name="name" autofocus>
+      </div>
+
+      <div>
+        <label for="region">지역을 선택해주세요.</label><br>
+        <select name="region" id="region" required>
+          <option value="">선택</option>
+          <option value="서울">서울</option>
+          <option value="대전">대전</option>
+          <option value="광주">광주</option>
+          <option value="구미">구미</option>
+          <option value="부산" disabled>부산</option>
+        </select>
+      </div>
+
+      <div>
+        <p>오늘의 체온을 선택해주세요.</p>
+        <input type="radio" name="body-heat" id="normal" value="normal" checked>
+        <label for="normal">37도 미만</label><br>
+        <input type="radio" name="body-heat" id="warning" value="warning">
+        <label for="warning">37도 이상</label>
+      </div>
+
+      <footer>
+        이건 연습용
+      </footer>
+
+      <input type="submit" value="제출">
+    </form>
+  </section>
+</body>
+</html>
