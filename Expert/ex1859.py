@@ -1,5 +1,5 @@
 # 백만 장자 프로젝트
-T = int(input())
+T = int(input()) 
 cnt = 0
 for t in range(T):
     N = int(input())
