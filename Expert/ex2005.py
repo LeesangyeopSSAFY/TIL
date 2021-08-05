@@ -9,3 +9,5 @@ for t in range(T):
         print(trow)
         trow=[left+right for left,right in zip(trow+y, y+trow)] # 구글링
     n += 1
+
+    
