@@ -15,6 +15,7 @@ for t in range(T):
     total2 = 0
     for i in range(1, N-K+2):
         for j in range(1, N-K+2):
+            # 내부 리스트의 j에서 j+K까지가 모두 1이고 그 전값이나 후 값이 0일 경우
             if (nn[i][j:j+K] == [1]*K and nn[i][j-1] == 0) or (nn[i][j:j+K] == [1]*K and nn[i][j+K+1] == 0):
                 total1 += 1
             
