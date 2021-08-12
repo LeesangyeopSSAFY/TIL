@@ -10,16 +10,10 @@ for t in range(T):
     totals = []
     for n in range(N):
         scores = list(map(int, input().split()))
-        total = int(scores[0]*0.35 + scores[1]*0.45 + scores[2]*0.2)
+        total = scores[0]*0.35 + scores[1]*0.45 + scores[2]*0.2
         totals.append(total)
     new_totals = sorted(totals)
     new_totals.reverse()
     K_score = new_totals.index(totals[K-1])
-    # if N % 20:
-    #     print(ans_list[K_score // (N//10)])
-    # else:
-    #     print(ans_list[K_score // (N//10) + 1])
-    if N == 20 or N == 40: #왜 여기만 한 칸 밑으로 나오는지는 모르겠음...
-        print(f'#{cnt} {ans_list[K_score // (N//10) + 1]}')
-    else:
-        print(f'#{cnt} {ans_list[K_score // (N//10)]}')
+    
+    print(f'#{cnt} {ans_list[K_score // (N//10)]}')
