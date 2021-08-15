@@ -6,25 +6,26 @@ for t in range(T):
     nk = list(map(int, input().split()))
     N = nk[0]
     K = nk[1]
+    # N*N 행렬의 테두리에 0을 둘러쌈
     nn.append([0] * (N + 2))
     for n in range(N):
         nn.append([0] + list(map(int, input().split())) + [0])
     nn.append([0] * (N + 2))
-
+    
     total = 0
-    for i in range(1, N - K + 2):
-        row_cnt = []
-        for j in range(1, N - K + 2):
-            # 내부 리스트의 j에서 j+K까지가 모두 1이고 그 전값이나 후 값이 0일 경우
-            if nn[i][j:j + K] == [1] * K and nn[i][j - 1] == 0 and nn[i][j + K] == 0:
-                total += 1
-            
+    for rc in range(1, N-K+2): # 구간합 구하듯 K 길이만큼을 구하기 위해 1부터 N-K+1까지
+        for i in range(1, N+1):
+            row_cnt = 0
+            col_cnt = 0
             for k in range(K):
-                row_cnt.append(nn[i+k][j])
-            if row_cnt == [1]*K and nn[i-1][j] == 0 and nn[i+K][j] == 0:
+                if nn[i][rc+k] == 1:
+                    col_cnt += 1
+                if nn[rc+k][i] == 1:
+                    row_cnt += 1
+            # 만약 K번 동안 1이고 그 앞뒤로 0일 경우 total에 1씩 추가
+            if row_cnt == K and nn[rc-1][i] == 0 and nn[rc+K][i] == 0:
                 total += 1
-
-            # if nn[j:j + K + 1][i] == [1] * K and nn[j - 1][i] == 0 and nn[j + K + 1][i] == 0:
-            #     total += 1
-
+            if col_cnt == K and nn[i][rc-1] == 0 and nn[i][rc+K] == 0:
+                total += 1
+    
     print("#{} {}".format(cnt, total))
