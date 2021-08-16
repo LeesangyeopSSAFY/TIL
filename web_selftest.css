@@ -11,5 +11,13 @@
 }
 
 .margin-3{
-  margin: 40px 20px 30px;
+  margin: 10px 20px 30px;
+}
+
+p ~ .color-blue{
+  color:blue;
+}
+
+p + p.color-red{
+  color: red;
 }
