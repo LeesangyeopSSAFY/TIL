@@ -9,13 +9,10 @@ for i in range(len(string)):
         if ''.join(stack[-len(bomb):]) == bomb: # 스택에 폭탄 문자열 길이만큼 쌓인 단어가 폭탄 문자열이라면
             for _ in range(len(bomb)): # 폭탄 문자열의 길이만큼 pop
                 stack.pop() 
-        # else: # 폭탄 문자열이 아니라면 다시 그냥 스택에 추가
-        #     stack.append(string[i])
-
+        
 if stack:
     print(''.join(stack))
 else:
     print('FRULA')
 
-# stack = ['m', 'i', 'r', 'k', 'o', 'v', 'C', '4']
-# print(''.join(stack[-2:]))
+
