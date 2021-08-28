@@ -1,3 +1,5 @@
+# 문제 제목 붙이기
+
 T = int(input())
 for t in range(1, T+1):
     N = int(input())

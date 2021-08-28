@@ -1,3 +1,5 @@
+# 안경이 없어
+
 T = int(input())
 for t in range(1, T+1):
     no_hole = ['C', 'E', 'F', 'G', 'H', 'L', 'M', 'N', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z']
