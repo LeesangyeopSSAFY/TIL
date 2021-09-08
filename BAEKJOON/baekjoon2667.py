@@ -9,7 +9,7 @@ def BFS(r, c, color):
     while Q:
         curr_r, curr_c = Q.pop(0)
         cnt += 1
-        for dir in range(4):
+        for dir in range(4): # 4방향 탐색
             nr = curr_r + dr[dir]
             nc = curr_c + dc[dir]
 
@@ -36,7 +36,7 @@ for i in range(N):
             ans.append(homes)
             color += 1
 
-ans.sort()
+ans.sort() # 오름차순 정렬이니
 print(len(ans))
 for a in ans:
     print(a)
