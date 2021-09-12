@@ -8,7 +8,7 @@ css_layout/
 CRUD_TEMPLATE/
 pjt05/
 django07HW/
-
+pocketball.py
 
 # Created by https://www.toptal.com/developers/gitignore/api/django,visualstudiocode,python
 # Edit at https://www.toptal.com/developers/gitignore?templates=django,visualstudiocode,python
