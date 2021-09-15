@@ -34,7 +34,7 @@ for n in range(N):
     region.append(line)
 
 ans_list = []
-for height in range(1, maxi+1):
+for height in range(0, maxi+1):
     # 차오르는 높이마다 비교해야 하므로 deepcopy
     zido = copy.deepcopy(region)
     for r in range(N):

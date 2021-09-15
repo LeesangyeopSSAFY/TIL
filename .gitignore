@@ -5,10 +5,12 @@ css_layout/
 01_django_model/
 02_django_form/
 03_django_staticfiles/
+04_django_auth/
 CRUD_TEMPLATE/
 pjt05/
 django07HW/
 pocketball.py
+
 
 # Created by https://www.toptal.com/developers/gitignore/api/django,visualstudiocode,python
 # Edit at https://www.toptal.com/developers/gitignore?templates=django,visualstudiocode,python
