@@ -1,3 +1,5 @@
+{% load static %}
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -9,6 +11,8 @@
 </head>
 <body>
   <div class='container'>
+    <img src="{% static 'images/식스센스.png' %}" alt="sample-img-2" style='width: 100%;'>
+    <hr>
     {% block content %}
     {% endblock content %}
   </div>
