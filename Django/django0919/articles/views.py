@@ -1,6 +1,7 @@
 from django.shortcuts import render, redirect
 from django.shortcuts import get_object_or_404
 from django.views.decorators.http import require_http_methods, require_POST
+from django.contrib.auth.decorators import login_required
 from .models import Article
 from .forms import ArticleForm
 
@@ -12,6 +13,7 @@ def index(request):
     }
     return render(request, 'articles/index.html', context)
 
+@login_required
 @require_http_methods(['GET', 'POST'])
 def create(request):
     if request.method == 'POST':
@@ -35,12 +37,12 @@ def detail(request, pk):
 
 @require_POST
 def delete(request, pk):
-    article = get_object_or_404(Article, pk=pk)
-    if request.method == 'POST':
+    if request.user.is_authenticated:
+        article = get_object_or_404(Article, pk=pk)
         article.delete()
-        return redirect('articles:index')
-    return redirect('articles:detail', article.pk)
+    return redirect('articles:index')
 
+@login_required
 @require_http_methods(['GET', 'POST'])
 def update(request, pk):
     article = get_object_or_404(Article, pk=pk)
