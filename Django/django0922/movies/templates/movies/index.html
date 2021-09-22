@@ -1,0 +1,13 @@
+{% extends 'base.html' %}
+
+{% block content %}
+  <h1 class='fw-bold'>Index Page</h1>
+  <hr>
+  {% for movie in movies %}
+    <h4 class='fw-bold'>{{ movie.title }}</h4>
+    <p>{{ movie.content }}</p>
+    <a href="{% url 'movies:detail' movie.pk %}">[더보기]</a>
+    <hr>
+  {% endfor %}
+  <a href="{% url 'movies:create' %}">[새로 만들기]</a>
+{% endblock content %}
