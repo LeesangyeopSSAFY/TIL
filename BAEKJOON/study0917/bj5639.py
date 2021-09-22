@@ -1,3 +1,6 @@
+# 이진 검색 트리
+# 이 문제는 잘 몰라서 찾아봤습니다
+# 이론은 이해가 어느 정도 가는데 코드는 아직 제대로 모르겠습니다
 import sys
 sys.setrecursionlimit(10**9)
 input = sys.stdin.readline

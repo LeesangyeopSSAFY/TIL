@@ -1,3 +1,4 @@
+# 트리의 부모 찾기
 import sys
 input = sys.stdin.readline
 # 반복의 기본값이 1000회 이므로 늘려줘야한다.
@@ -5,7 +6,7 @@ sys.setrecursionlimit(10**9)
 
 def dfs(st):
     for i in tree[st]:
-        if par[i] == 0:
+        if par[i] == 0: # 부모 자리가 0이면
             par[i] = st
             dfs(i)
 

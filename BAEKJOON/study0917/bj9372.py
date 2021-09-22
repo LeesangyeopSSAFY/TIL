@@ -1,3 +1,4 @@
+# 상근이의 여행
 import sys
 input = sys.stdin.readline
 
@@ -19,6 +20,8 @@ for t in range(T):
         a, b = list(map(int, input().split()))
         tree[a].append(b)
         tree[b].append(a)
+    
+    # print(N-1)
 
     visited = [0]*(N+1)
 
