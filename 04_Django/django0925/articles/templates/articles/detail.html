@@ -5,6 +5,9 @@
   <hr>
   <h5>{{ article.title }}</h5>
   <p>{{ article.content }}</p>
+  {% if article.image %}
+    <img src="{{ article.image.url }}" alt="{{ article.image }}">
+  {% endif %}
   <hr>
   <p>생성 시각: {{ article.created_at }}</p>
   <p>수정 시각: {{ article.updated_at }}</p>
