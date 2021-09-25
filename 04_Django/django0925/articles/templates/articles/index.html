@@ -1,0 +1,13 @@
+{% extends 'base.html' %}
+
+{% block content %}
+  <h1>Index</h1>
+  <hr>
+  {% for article in articles %}
+    <h5 class='fw-bold'>{{ article.title }}</h5>
+    <p>{{ article.content }}</p>
+    <a href="{% url 'articles:detail' article.pk %}">[더보기]</a>
+    <hr>
+  {% endfor %}
+  <a href="{% url 'articles:create' %}">[New]</a>
+{% endblock content %}
