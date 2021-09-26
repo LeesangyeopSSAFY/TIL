@@ -1,0 +1,20 @@
+{% extends 'base.html' %}
+
+{% block content %}
+  <h2>{{ movie.title }}</h2>
+  <hr>
+  <img src="{{ movie.poster_url }}" alt="{{ movie.title }}">
+  <p>{{ movie.content }}</p>  
+  <hr>
+  <p>생성 시각: {{ movie.created_at }}</p>
+  <p>수정 시각: {{ movie.updated_at }}</p>
+  <hr>
+  <a href="{% url 'movies:index' %}">[BACK]</a>
+  {% if user.is_authenticated %}
+    <form action="{% url 'movies:delete' movie.pk %}" method='POST'>
+      {% csrf_token %}
+      <input type="submit" value='삭제'>
+    </form>
+  {% endif %}
+  <a href="{% url 'movies:update' movie.pk %}">[수정]</a>
+{% endblock content %}
