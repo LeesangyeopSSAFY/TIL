@@ -11,6 +11,7 @@ pjt05/
 django07HW/
 exam03/
 pocketball.py
+users.csv
 
 
 # Created by https://www.toptal.com/developers/gitignore/api/django,visualstudiocode,python
