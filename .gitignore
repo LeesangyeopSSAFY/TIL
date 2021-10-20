@@ -7,6 +7,8 @@ css_layout/
 03_django_staticfiles/
 04_django_auth/
 05_django_model_relationship_l/
+06_django_model_relationship_ll/
+99_mtm_practice/
 CRUD_TEMPLATE/
 pjt05/
 django07HW/
