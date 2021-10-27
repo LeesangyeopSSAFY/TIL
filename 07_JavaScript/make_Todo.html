@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <form action="#">
+    <input type="text">
+    <button>Add</button>
+  </form>
+
+  <ul>
+
+  </ul>
+
+  <script>
+    const form = document.querySelector('form')
+
+    const addTodo = function (event) {
+      event.preventDefault()
+
+
+      const input = document.querySelector('input')
+      const content = input.value
+
+      // 내용이 있을 때
+      if (content.trim()) {
+        // ul태그의 li태그로 추가
+        const liTag = document.createElement('li')
+        liTag.innerText = content
+
+        const ulTag = document.querySelector('ul')
+        ulTag.appendChild(liTag)
+      // 내용이 없을 때
+      } else {
+        alert('할 일을 입력하시오.')
+      }
+      // todo가 추가된 후 input value의 값 초기화
+      event.target.reset()
+    }
+
+    form.addEventListener('submit', addTodo)
+  </script>
+</body>
+</html>
