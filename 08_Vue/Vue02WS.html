@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Vue02WS</title>
+  <style>
+    .completed {
+      text-decoration: line-through;
+    }
+  </style>
+</head>
+<body>
+  <h1>Todos</h1>
+  <div id='app'>
+    <select name="todos" id="todo-select">
+      <option value="all">전체</option>
+      <option value="doing">진행중</option>
+      <option value="finish">완료</option>
+    </select>
+
+    <input v-model="todoMessage" type="text" v-on:keyup.enter="onTodoList">
+    <button @click= "onTodoList">+</button>
+    
+    <li v-for="todo in todoStatus">
+      <input type="checkbox" v-model="todo.completed">
+      <span :class="{completed:todo.completed}"></span>
+    </li>
+
+    <ul>  
+      <li v-for="todo in todos" v-if="!todo.completed" @click="check(todo)">{{ todoMessage }}</li>
+      <li v-else @click="check(todo)">완료</li>
+    </ul>
+
+    <button @click="clearCompleted">완료된 할 일 지우기</button>
+  </div>
+    
+
+  <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+  <script>
+    const app = new Vue({
+      el: '#app',
+      data: {
+        todoMessage: '',
+        todos: [],
+        status: 'all'
+      },
+      methods: {
+        check: function () {
+          todo.completed = !todo.completed
+        },
+        onTodoList: function () {
+          // const liTag = document.createElement('li')
+          // liTag.innerText = this.todoMessage
+          // const cbTag = document.createElement('input')
+          // cbTag.type = "checkbox"
+
+          // const ulTag = document.querySelector('ul')
+          // ulTag.appendChild(liTag)
+          // liTag.appendChild(cbTag)
+          this.todos.push({
+            content: this.todoMessage,
+            completed: false,
+          })
+          console.log(this.todoMessage)
+          this.todoMessage = "" 
+        },
+        clearCompleted: function () {
+          const notCompletedTodos = this.todos.filter((todo) => {
+            return !todo.completed
+          })
+          this.todos = notCompletedTodos
+        },
+        todoStatus: function () {
+          if (this.status === 'doing') {
+            return this.todos.filter((todo) => {
+              return !todo.completed
+            })
+          }
+
+          if (this.status === 'finish') {
+            return this.todos.filter((todo) => {
+              return todo.completed
+            })
+          }
+
+          return this.todos
+        }
+      }
+    })
+  </script>
+</body>
+</html>
