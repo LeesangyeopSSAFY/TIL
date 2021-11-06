@@ -1,0 +1,11 @@
+{% extends 'base.html' %}
+
+{% block content %}
+  <h2>추천 영화</h2>
+  <hr>
+  <ul>
+    {% for movie in movies %}
+      <li>{{ movie.title }}</li>
+    {% endfor %}
+  </ul>
+{% endblock %}

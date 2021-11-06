@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>엽's Todo</title>
+  <style>
+    .completed {
+      text-decoration: line-through;
+      color: gray;
+    }
+  </style>
+</head>
+<body>
+  <div id='app'>
+    <h1>Todo</h1>
+    <select v-model="status">
+      <option value="all">전체</option>
+      <option value="inProgress">진행중</option>
+      <option value="ok">완료</option>
+    </select>
+    <!-- v-model을 통해서 현재 내 data와 연결 -->
+    <input type="text" v-model="content" v-on:keyup.enter="addTodo">
+    <button @click="addTodo">+</button>
+
+    <hr>
+
+    <ul>
+      <li v-for="(todo, index) in todoListByStatus" :key="todo.date">
+        <!-- <input type="checkbox" :checked="todo.isOk" @click="toggleTodo(todo)"> -->
+        <input type="checkbox" v-model="todo.isOk">
+        <!-- 두 가지 방식이 있다
+          v-bind: 단방향
+          v-model: 양방향 -->
+        <!-- class이름(키): 적용할지말지(true면 적용하고 false면 적용하지 않는다.) -->
+        <span :class="{ completed: todo.isOk }">{{ todo.content }}</span>
+      </li>
+    </ul>
+
+    <button @click="deleteOk">완료된 할일 지우기</button>
+
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+  <script>
+    const STORAGE_KEY = 'todo-list'
+    const todoStorage = {
+      fetch: function () {
+        // 값이 있으면 가져오고 없으면 빈리스트
+        // JSON.parse를 이용하여 객체형태로 바꿈
+        return JSON.parse(localStorage.getItem(STORAGE_KEY)) || []
+      },
+      save: function (todoList) {
+        // JSON.stringify를 이용하여 객체를 문자열로 바꿈
+        localStorage.setItem(STORAGE_KEY, JSON.stringify(todoList))
+      }
+    }
+
+    const app = new Vue({
+      el: '#app',
+      data: {
+        content: null,
+        todoList: todoStorage.fetch(), // localStrage에서 값을 가져오자
+        status: "all",
+      },
+      methods: {
+        addTodo: function () {
+          const todo = {
+            content: this.content, // 할 일
+            isOk: false, // 했는지 여부
+            date: new Date().getTime() // key용도
+          }
+          this.todoList.push(todo)
+          this.content = null // 초기화
+        },
+        // 이 함수는 v-bind 했을 때 사용한다. v-model를 쓰면 안 씀
+        toggleTodo: function (todo) {
+          todo.isOk = !todo.isOk
+        },
+        deleteOk: function() {
+          // filter를 사용하여 완료하지 않은 일만 남김
+          this.todoList = this.todoList.filter(todo => {
+            return !todo.isOk
+          })
+        }
+      },
+      computed: {
+        todoListByStatus: function () {
+          return this.todoList.filter(todo => {
+            if (this.status === 'inProgress') {
+              return !todo.isOk
+            } else if (this.status === 'ok') {
+              return todo.isOk
+            }
+            return true
+          })
+        }
+      },
+      watch: {
+        // todoList 값을 계속 지켜보고 있음
+        todoList: {
+          // 공식문서 참조(https://kr.vuejs.org/v2/api/#vm-watch)
+          // Vue에서 배열이나 객체를 watch할 때는 속성 내부가 변경되었다고 해서 관심을 주지 않음
+          // 주소를 보고 있기 떄문에, 주소가 달라지면 바뀌었다고 생각함
+          // 따라서 내부도 봐줘라는 속성이 deep
+          deep: true,
+          // 내부적으로 속성이 변경이 되었다면 호출될 함수를 작성
+          handler: function (todoList) {
+            todoStorage.save(todoList)
+          },
+        }
+      }
+    })
+  </script>
+</body>
+</html>
