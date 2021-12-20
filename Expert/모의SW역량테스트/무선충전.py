@@ -5,3 +5,5 @@ for t in range(1, T+1):
     userB = list(map(int, input().split()))
     AP_list = [list(map(int, input().split())) for _ in range(A)]
     
+
+# https://week-year.tistory.com/145
