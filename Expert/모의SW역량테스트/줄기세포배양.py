@@ -1,3 +1,6 @@
+dr = [-1, 1, 0, 0]
+dc = [0, 0, -1, 1]
+
 T = int(input())
 for t in range(1, T+1):
     N, M, K = map(int, input().split())
@@ -6,7 +9,8 @@ for t in range(1, T+1):
     for i in range(N):
         for j in range(M):
             X = first_status[i][j]
-            board[N+i][M+j] = [X, X]
+            board[K+i][K+j] = [X, X]
+    
     
     
 
