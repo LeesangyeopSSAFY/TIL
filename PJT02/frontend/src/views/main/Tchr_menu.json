@@ -1,0 +1,9 @@
+{
+  "Main_calendar" : {
+    "name" : "메인",
+    "hidden" : false,
+    "path" : "/",
+    "icon" : "el-icon-s-home",
+    "children" : []
+  }
+}

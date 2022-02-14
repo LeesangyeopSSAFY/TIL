@@ -1,0 +1,23 @@
+{
+  "Main_calendar" : {
+    "name" : "메인",
+    "hidden" : false,
+    "path" : "/",
+    "icon" : "el-icon-s-home",
+    "children" : []
+  },
+  "hw_notice" : {
+    "name" : "과제&공지사항",
+    "hidden" : false,
+    "path" : "/hw_notice",
+    "icon" : "el-icon-s-order",
+    "children" : []
+  },
+  "Lesson" : {
+    "name" : "수업",
+    "hidden" : false,
+    "path" : "/lesson",
+    "icon" : "el-icon-s-order",
+    "children" : []
+  }
+}
